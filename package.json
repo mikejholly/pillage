@@ -1,0 +1,19 @@
+{
+  "name": "pillage",
+  "version": "0.0.1",
+  "description": "Extracts content from a web page.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Mike Holly <mikejholly@gmail.com>",
+  "license": "Proprietary",
+  "dependencies": {
+    "express": "^4.8.5",
+    "cheerio": "^0.17.0"
+  },
+  "devDependencies": {
+    "should": "^4.0.4",
+    "mocha": "^1.21.4"
+  }
+}
