@@ -8,6 +8,7 @@ var load = function(name) {
 
 var articleSparseText = load('buzzfeed');
 var articleWithImages = load('images');
+var articleWithVideos = load('wired');
 
 describe('extractOpenGraphTags', function() {
   it('should return all open graph tags', function() {
@@ -39,6 +40,13 @@ describe('extractText', function() {
 describe('extractImages', function() {
   it('should extract images', function() {
     var images = pillage.extractImages(articleWithImages);
-    console.log(images)
+    images.should.have.lengthOf(23);
+  });
+});
+
+describe('extractVideos', function() {
+  it('should extract videos', function() {
+    var videos = pillage.extractVideos(articleWithVideos);
+    videos.should.have.lengthOf(2);
   });
 });

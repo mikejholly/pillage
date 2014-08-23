@@ -188,8 +188,11 @@ function extractArticleTags(html) {
 function extractVideos(html) {
   var $ = cheerio.load(html);
   var videoUrls = [];
-  $('iframe, object, embed').each(function() {
-
+  $('iframe').each(function() {
+    var src = $(this).attr('src');
+    if (/youtube.com/.test(src)) {
+      videoUrls.push(src);
+    }
   });
   return videoUrls;
 }
@@ -220,6 +223,7 @@ function pillage(html) {
 _.extend(module.exports, {
   extractText: extractText,
   extractImages: extractImages,
+  extractVideos: extractVideos,
   extractArticleTags: extractArticleTags,
   extractOpenGraphTags: extractOpenGraphTags,
   extractTwitterTags: extractTwitterTags,
