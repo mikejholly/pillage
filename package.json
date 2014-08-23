@@ -10,7 +10,10 @@
   "license": "Proprietary",
   "dependencies": {
     "express": "^4.8.5",
-    "cheerio": "^0.17.0"
+    "cheerio": "^0.17.0",
+    "gm": "^1.16.0",
+    "lodash": "^2.4.1",
+    "oid": "^0.5.1"
   },
   "devDependencies": {
     "should": "^4.0.4",
