@@ -1,6 +1,6 @@
 {
   "name": "pillage",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Extracts content from a web page.",
   "main": "index.js",
   "scripts": {
