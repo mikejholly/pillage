@@ -9,7 +9,6 @@ var load = function(name) {
 var articleSparseText = load('buzzfeed');
 var articleWithImages = load('images');
 
-/*
 describe('extractOpenGraphTags', function() {
   it('should return all open graph tags', function() {
     var tags = pillage.extractOpenGraphTags(articleSparseText);
@@ -36,7 +35,6 @@ describe('extractText', function() {
     var text = pillage.extractText(articleSparseText);
   });
 });
-*/
 
 describe('extractImages', function() {
   it('should extract images', function() {

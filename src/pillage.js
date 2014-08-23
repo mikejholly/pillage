@@ -1,3 +1,5 @@
+'use strict';
+
 var _       = require('lodash');
 var cheerio = require('cheerio');
 var oid     = require('oid');
@@ -79,7 +81,7 @@ function extractText(html) {
 
 function findAllTextNodes($, el, textNodes) {
   $(el).contents().each(function() {
-    if (this.type == 'text' && this.data.trim().length > 0) {
+    if (this.type == 'text' && this.data.trim().length > 0 && $(this).parents('a').length < 1) {
       textNodes.push(this);
     }
     findAllTextNodes($, this, textNodes);
@@ -130,16 +132,21 @@ function extractCanonicalUrl(html) {
 
 function extractDescription(html) {
   var openGraphTags = extractOpenGraphTags(html);
-  if (openGraphTags['og:title']) {
-    return openGraphTags['og:title'].trim();
+  if (openGraphTags['og:description']) {
+    return openGraphTags['og:description'].trim();
   }
 
   var twitterTags = extractTwitterTags(html);
-  if (twitterTags['twitter:title']) {
-    return twitterTags['twitter:title'].trim();
+  if (twitterTags['twitter:description']) {
+    return twitterTags['twitter:description'].trim();
   }
 
   var $ = cheerio.load(html);
+
+  var desc = $('meta[name=description]');
+  if (desc.length) {
+    return desc.attr('content').trim();
+  }
 
   return $('title').text().trim();
 }
@@ -180,9 +187,24 @@ function extractArticleTags(html) {
 
 function extractVideos(html) {
   var $ = cheerio.load(html);
+  var videoUrls = [];
+  $('iframe, object, embed').each(function() {
+
+  });
+  return videoUrls;
 }
 
-module.exports = function(html) {
+module.exports = function(resource, fn) {
+  if (/^https?:\/\//.test(resource)) {
+    request(resource, function(err, res, body) {
+      fn(err, body);
+    });
+  } else {
+    return pillage(html);
+  }
+};
+
+function pillage(html) {
   return {
     title: extractTitle(html),
     description: extractDescription(html),
@@ -193,7 +215,7 @@ module.exports = function(html) {
     openGraphTags: extractOpenGraphTags(html),
     articleTags: extractArticleTags(html),
   };
-};
+}
 
 _.extend(module.exports, {
   extractText: extractText,

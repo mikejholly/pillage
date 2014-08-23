@@ -12,7 +12,8 @@
     "express": "^4.8.5",
     "cheerio": "^0.17.0",
     "lodash": "^2.4.1",
-    "oid": "^0.5.1"
+    "oid": "^0.5.1",
+    "request": "^2.40.0"
   },
   "devDependencies": {
     "should": "^4.0.4",
