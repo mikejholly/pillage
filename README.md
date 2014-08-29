@@ -6,7 +6,7 @@ really, really, really ... fun. Once we have the content region we can parse out
 images, videos and other media. We also threw in a lot of the easy stuff like OG tags
 for your convenience.
 
-<small>✝ It basically searches for every text node, then recursively climbs the parent tree, assigning a weighed "score" based on text length to each parent. The value rapidly drops off as we move up the tree. This is done for all text nodes so the weights accumulate to identify the most probable shared parent. Once we have that wrapper we can make assumptions and easily parse out body content.</small>
+<sub>✝ It basically searches for every text node, then recursively climbs the parent tree, assigning a weighed "score" based on text length to each parent. The value rapidly drops off as we move up the tree. This is done for all text nodes so the weights accumulate to identify the most probable shared parent. Once we have that wrapper we can make assumptions and easily parse out body content.</sub>
 
 ## Install
 
