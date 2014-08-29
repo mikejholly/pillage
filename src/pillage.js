@@ -185,12 +185,27 @@ function extractArticleTags(html) {
   return tags;
 }
 
+function extractOEmbed(html) {
+  var $ = cheerio.load(html);
+  var selectors = [
+    'link[type="application/json+oembed"]',
+    'link[type="text/xml+oembed"]',
+  ];
+  return _(selectors).map(function(selector) {
+    var $el = $(selector);
+    if ($el.length) {
+      return $el.attr('href');
+    }
+    return null;
+  }).filter().first().value();
+}
+
 function extractVideos(html) {
   var $ = cheerio.load(html);
   var videoUrls = [];
   $('iframe').each(function() {
     var src = $(this).attr('src');
-    if (/youtube.com/.test(src)) {
+    if (/youtube\.com|vine\.co|embed/.test(src)) {
       videoUrls.push(src);
     }
   });
@@ -217,6 +232,7 @@ function pillage(html) {
     twitterTags: extractTwitterTags(html),
     openGraphTags: extractOpenGraphTags(html),
     articleTags: extractArticleTags(html),
+    oEmbed: extractOEmbed(html),
   };
 }
 
@@ -227,4 +243,5 @@ _.extend(module.exports, {
   extractArticleTags: extractArticleTags,
   extractOpenGraphTags: extractOpenGraphTags,
   extractTwitterTags: extractTwitterTags,
+  extactOEmbed: extractOEmbed,
 });
