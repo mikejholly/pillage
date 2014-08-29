@@ -1,18 +1,18 @@
 ![Pillage](http://i.imgur.com/oaliSyP.jpg)
 
- Pillage is a super awesome Node.js library for parsing webpages. It uses a baller
- algorithm to identify the content region of a webpage with incredibly fun
- accuracy. Once we have the content region we can parse out text, images, videos
- and other media. We also through in a lot of the easy stuff like OG tags for your
- convenience.
+Pillage is a super awesome Node.js library for parsing webpages. It uses a baller
+algorithm to identify the content region of a webpage with accuracy that's really
+really really really fun. Once we have the content region we can parse out text,
+images, videos and other media. We also through in a lot of the easy stuff like OG tags for your
+convenience.
 
- ## Install
+## Install
 
- `npm install pillage`
+`npm install pillage`
 
- ## Usage
+## Usage
 
- ```js
+```js
 var pillage = require('pillage');
 
 // Fetch a URL and process
@@ -25,7 +25,7 @@ var result = pillage(html);
 console.log(result);
  ```
 
- ```js
+```js
  // Here's the object structure that it will return
  return {
    title: extractTitle(html),
@@ -38,12 +38,12 @@ console.log(result);
    articleTags: extractArticleTags(html),
    oEmbed: extractOEmbed(html),
  };
- ```
+```
 
- ## License
+## License
 
- MIT
+MIT
 
- ## Author
+## Author
 
- Mike Holly
+Mike Holly
