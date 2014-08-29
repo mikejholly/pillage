@@ -1,10 +1,10 @@
 ![Pillage](http://i.imgur.com/oaliSyP.jpg)
 
 Pillage is a super awesome Node.js library for parsing webpages. It uses a baller
-algorithm to identify the content region of a webpage with accuracy that's really
-really really really fun. Once we have the content region we can parse out text,
-images, videos and other media. We also through in a lot of the easy stuff like OG tags for your
-convenience.
+algorithm to identify the content region of a webpage with accuracy that's really,
+really, really, really ... fun. Once we have the content region we can parse out text,
+images, videos and other media. We also through in a lot of the easy stuff like OG tags
+for your convenience.
 
 ## Install
 
