@@ -1,12 +1,4 @@
-<pre>
-      ::::::::: ::::::::::: :::        :::            :::      ::::::::  ::::::::::
-     :+:    :+:    :+:     :+:        :+:          :+: :+:   :+:    :+: :+:
-    +:+    +:+    +:+     +:+        +:+         +:+   +:+  +:+        +:+
-   +#++:++#+     +#+     +#+        +#+        +#++:++#++: :#:        +#++:++#
-  +#+           +#+     +#+        +#+        +#+     +#+ +#+   +#+# +#+
- #+#           #+#     #+#        #+#        #+#     #+# #+#    #+# #+#
-###       ########### ########## ########## ###     ###  ########  ##########       
-</pre>
+![Pillage](http://i.imgur.com/oaliSyP.jpg)
 
  Pillage is a super awesome Node.js library for parsing webpages. It uses a baller
  algorithm to identify the content region of a webpage with incredibly fun
