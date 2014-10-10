@@ -200,15 +200,13 @@ function extractOEmbed(html) {
     'link[type="application/json+oembed"]',
     'link[type="text/xml+oembed"]',
   ];
-  var match = _(selectors).map(function(selector) {
+  return _(selectors).map(function(selector) {
     var $el = $(selector);
     if ($el.length) {
       return $el.attr('href');
     }
     return null;
   }).filter().first();
-  if (match) return match.value();
-  return null;
 }
 
 function extractVideos(html) {
