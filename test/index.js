@@ -2,13 +2,14 @@ var fs      = require('fs');
 var should  = require('should');
 var pillage = require('../src/pillage');
 
-var load = function(name) {
+function load(name) {
   return fs.readFileSync(__dirname + '/fixtures/' + name + '.html', 'utf8');
 }
 
 var articleSparseText = load('buzzfeed');
 var articleWithImages = load('images');
 var articleWithVideos = load('wired');
+var youtubeVideo      = load('youtube');
 
 describe('extractOpenGraphTags', function() {
   it('should return all open graph tags', function() {
@@ -48,5 +49,12 @@ describe('extractVideos', function() {
   it('should extract videos', function() {
     var videos = pillage.extractVideos(articleWithVideos);
     videos.should.have.lengthOf(2);
+  });
+});
+
+describe('youtubeVideo', function() {
+  it('should extract videos', function() {
+    var result = pillage(articleWithVideos);
+    console.log(result);
   });
 });

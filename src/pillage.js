@@ -2,6 +2,7 @@
 
 var _       = require('lodash');
 var cheerio = require('cheerio');
+var request = require('request');
 var oid     = require('oid');
 
 function getLinkToTextRatio($, el) {
@@ -160,7 +161,11 @@ function extractOpenGraphTags(html) {
   var tags = {};
   $('meta[property^="og:"]').each(function(i, el) {
     var $el = $(el);
-    tags[$el.attr('property').trim()] = $el.attr('content').trim();
+    var prop = $el.attr('property');
+    var content = $el.attr('content');
+    if (prop && content) {
+      tags[prop.trim()] = content.trim();
+    }
   });
   return tags;
 }
@@ -170,7 +175,11 @@ function extractTwitterTags(html) {
   var tags = {};
   $('meta[name^="twitter:"]').each(function(i, el) {
     var $el = $(el);
-    tags[$el.attr('name').trim()] = $el.attr('content').trim();
+    var name = $el.attr('name');
+    var content = $el.attr('content');
+    if (name && content) {
+      tags[name.trim()] = content.trim();
+    }
   });
   return tags;
 }
@@ -191,13 +200,15 @@ function extractOEmbed(html) {
     'link[type="application/json+oembed"]',
     'link[type="text/xml+oembed"]',
   ];
-  return _(selectors).map(function(selector) {
+  var match = _(selectors).map(function(selector) {
     var $el = $(selector);
     if ($el.length) {
       return $el.attr('href');
     }
     return null;
-  }).filter().first().value();
+  }).filter().first();
+  if (match) return match.value();
+  return null;
 }
 
 function extractVideos(html) {
@@ -218,7 +229,7 @@ module.exports = function(resource, fn) {
       fn(err, body);
     });
   } else {
-    return pillage(html);
+    return pillage(resource);
   }
 };
 
