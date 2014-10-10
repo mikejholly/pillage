@@ -54,7 +54,11 @@ function getContentNode($, textNodes) {
   }).value();
 
   var winner = items.shift();
-  return nodes[winner[0]];
+  if (winner) {
+    return nodes[winner[0]];
+  } else {
+    return null;
+  }
 }
 
 function extractText(html) {
