@@ -228,7 +228,7 @@ function extractVideos(html) {
 module.exports = function(resource, fn) {
   if (/^https?:\/\//.test(resource)) {
     request(resource, function(err, res, body) {
-      fn(err, body);
+      fn(err, pillage(body));
     });
   } else {
     return pillage(resource);
@@ -248,13 +248,3 @@ function pillage(html) {
     oEmbed: extractOEmbed(html),
   };
 }
-
-_.extend(module.exports, {
-  extractText: extractText,
-  extractImages: extractImages,
-  extractVideos: extractVideos,
-  extractArticleTags: extractArticleTags,
-  extractOpenGraphTags: extractOpenGraphTags,
-  extractTwitterTags: extractTwitterTags,
-  extactOEmbed: extractOEmbed,
-});
